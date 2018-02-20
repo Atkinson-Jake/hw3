@@ -27,13 +27,29 @@ class App extends Component {
       hand: ["face_down", "face_down", "face_down", "face_down", "face_down"]
     }
   }
+
+  shuffle() {
+    this.setState({
+      hand: shuffledDeck().slice(0,5)
+    })
+  }
+
   render() {
     // array to hold JSX elements
-    let cards = []; 
+    let cards = [];
+    for (var i = 0; i < 5; i++) {
+      cards.push("http://golearntocode.com/images/cards/" + this.state.hand[i] + ".png")
+    }
     return (
       <div className="App">
-        {cards}     
-        <p><button>Deal a new hand</button></p>
+        <h1>
+        <img src = {cards[0]}/>
+        <img src = {cards[1]}/>
+        <img src = {cards[2]}/>
+        <img src = {cards[3]}/>
+        <img src = {cards[4]}/>
+        </h1>
+        <p><button onClick={() => this.shuffle()}>Deal a new hand</button></p>
       </div>
     );
   }
